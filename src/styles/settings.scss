@@ -1,0 +1,121 @@
+/**
+ * src/styles/settings.scss
+ *
+ * Configures SASS variables and Vuetify overwrites
+ */
+
+// https://vuetifyjs.com/features/sass-variables/`
+// @use 'vuetify/settings' with (
+//   $color-pack: false
+// );
+
+
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-family: 'Kanit', sans-serif;
+  font-size : 1em;
+}
+.main{
+  background: url(bg.png);
+}
+.pr{
+  width: 100%;
+  height: 100%;
+}
+.Slide{
+  justify-content: center;
+}
+.Slide h2{
+  font-size: 3rem;
+}
+.title{
+  font-size: 2rem;
+  font-weight: 450;
+  padding-inline: 10px;
+}
+.about{
+  display: none;
+}
+@keyframes updown {
+  0%{top: 0%;}
+  25%{top:-2.5%;}
+  50%{top: 0%;}
+  75%{top: 0%;}
+  100%{top: 0%;}
+}
+@media only screen and (max-width: 600px) {
+  .Slide{
+    max-height: 300px;
+  }
+  .Slide h2{
+    font-size: 2.76rem;
+  }
+  .banner {
+    opacity: .9;
+    text-align: center;
+    justify-content: center;
+  }
+  .banner p{
+    display: none ;
+  }
+  .about{
+    display: flex;
+  }
+}
+.banner{
+  text-shadow: 2px 2px 2px #1e1e1e;
+  position: relative;
+  animation-name: updown;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+.banner p {
+    font-size: 1.4rem;
+}
+.card:hover{
+  top: -2%;
+  cursor: pointer;
+  background: #c2c2c2;
+  animation-name: updown;
+  animation-duration: 1.1s;
+  animation-iteration-count: infinite;
+}
+.newPost {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  z-index: 999;
+  inset-block-end: 5%;
+  inset-inline-end: 40px;
+}
+
+// Navbar
+#hamburger-menu{
+  display: none;
+}
+#mobile-menu{
+  display: none;
+}
+@media screen and (max-width: 750px) {
+  #main-menu {
+    display: none;
+  }
+  #mobile-menu {
+    display:grid;
+    align-items: start;
+  }
+  #hamburger-menu {
+    display: inline;
+  }
+}
+.logo :hover{
+  cursor: pointer;
+}
+.logo{
+  background: transparent;
+}
+// =====================
