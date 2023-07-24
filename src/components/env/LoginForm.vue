@@ -31,25 +31,29 @@ import axios from 'axios';
 
 export default defineComponent({
   emits:['submitlogin'],
-  props:[],
   setup(props, {emit}) {
     let post_data={username: "",password: ""}
+    var data = {user: post_data.username,
+                pass: post_data.password,}
     let res=""
     const login = (e)=>{
         e.preventDefault();
-        axios.post('http://26.228.141.51/login.php', {
-        user: post_data.username,
-        pass: post_data.password,
-      }).then(response => {
+        axios.post('http://directory03beta.000webhostapp.com/login.php', data).then(response => {
         res = (response.data)
-        console.log(res);           //admin\r\n\r\n
-        emit('submitlogin',res) 
+        // console.log(res);           //admin\r\n\r\n
+        if(res=='admin\r\n\r\n'){
+          res = 'admin'
+          emit('submitlogin',res); 
+        }else{
+          res='user'
+          emit('submitlogin',res);
+        }
       })
     }
     return{
       post_data,
       res,
-      login
+      login,
     }
   },
 })

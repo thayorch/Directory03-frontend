@@ -1,18 +1,22 @@
 <template>
+  <div class="bg-fff">
   <VCard
-    max-width="400"
-    class="mx-auto"
+    max-width="auto"
+    class="mx-auto bg-transparent"
   >
-
+  <VContainer style="background: transparent;">
       <VRow dense>
-        <VCol cols="auto"
+        <VCol 
+          cols="auto"
           v-for="i in result"
           :key="i"
-          class="mx-auto my-2">
+          class="mx-auto my-2 d-flex ">
           <VCard
+            border
+            border-primary
             color="white"
             theme="dark"
-            width="370"
+            width="380"
           >
 
 
@@ -41,9 +45,10 @@
           </div>
           </VCard>
         </VCol>
-
       </VRow>
+    </VContainer>
   </VCard>
+  </div>
 </template>
 
 <script lang="ts">
@@ -58,7 +63,7 @@ export default defineComponent({
     const deleteN = (id)=>{
     console.log(id);
       if(id!==null){
-        axios.post('http://26.228.141.51/delete.php', {
+        axios.post('http://directory03beta.000webhostapp.com/delete.php', {
           id: parseInt(id)
         })
         .then((response)=>{
@@ -74,7 +79,7 @@ export default defineComponent({
   }
 
   onMounted(() => {
-    axios.get('http://26.228.141.51/postapi.php')
+    axios.get('http://directory03beta.000webhostapp.com/postapi.php')
     .then(response => {
       result.value = (response.data).reverse()
     })

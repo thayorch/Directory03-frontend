@@ -3,16 +3,16 @@
     ม.6 / ปี 2566
 </h2>
 
-  <VRow>
+  <VRow dense>
     <VCol
     v-for="i in result"
     :key="i"
       cols=auto
-      class="mx-auto"
+      class="mx-auto d-flex"
     >
     <VCard
     class="mx-auto my-1"
-    max-width="355"
+    max-width="auto"
     height="680"
     >
       <VImg
@@ -72,12 +72,13 @@ export default defineComponent({
     const result = ref<any>([])
     const links = []
     onMounted(() => {
-        axios.get('http://26.228.141.51/66api.php')
+        axios.get('http://directory03beta.000webhostapp.com/66api.php')
               .then(response => {
                 result.value = response.data
                 for(let i = 0; i < result.value.length; i++){
                   links[i] = `/public/m6_66/${result.value[i].Picture}`;
-                } console.log(result.value); console.log(links);
+                } 
+                // console.log(result.value); console.log(links);
               })
               .catch(error => {
                 console.error('Error fetching data:', error);

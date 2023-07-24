@@ -3,7 +3,7 @@
   <section>
       <div class="form-box">
           <div class="form-value">
-              <form action="post">
+              <form action="">
                 <div>
                   <VAvatar class="avatar-1 my-3 border border-primary bg-white" size="90">
                   <v-icon size="80" class="text-primary" theme="dark">mdi-account</v-icon>
@@ -34,13 +34,11 @@ import axios from 'axios'
 export default defineComponent({
   setup() {
     let post_data={name:"",description:"",}
+    var data = {name:  post_data.name, description:  post_data.description,}
     const sendData = ()=>{
             console.log("sendData Active!!");
             if( post_data.name!=='' &&  post_data.description!==''){
-            axios.post('http://26.228.141.51/insert.php', {
-              name:  post_data.name,
-              description:  post_data.description,
-            })
+            axios.post('http://directory03beta.000webhostapp.com/insert.php', data)
             .then((response)=>{
               console.log(response);
             })

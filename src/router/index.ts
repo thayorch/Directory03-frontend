@@ -2,8 +2,9 @@
 
 import { createRouter, createWebHistory } from 'vue-router'
 import Dashbord from '@/views/Dashbord';
-import Posting from '@/views/Posting';
+import Explore from '@/views/Explore';
 import About from '@/views/About';
+import Staff from '@/views/Staff';
 import List_m6_66 from '@/components/Lists/List_m6_66';
 import List_m5_66 from '@/components/Lists/List_m5_66';
 import List_m4_66 from '@/components/Lists/List_m4_66';
@@ -15,9 +16,14 @@ const routes = [
     component: Dashbord,
   },
   {
-    path: '/post',
-    name: 'Posting',
-    component:Posting
+    path: '/explore',
+    name: 'Explore',
+    component:Explore
+  },
+  {
+    path: '/staff',
+    name: 'Staff',
+    component:Staff
   },
   {
     path: '/about',

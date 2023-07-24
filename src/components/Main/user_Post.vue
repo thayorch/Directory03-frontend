@@ -1,39 +1,40 @@
 <template>
+  <div class="bg-fff">
   <VCard
-    max-width="400"
-    class="mx-auto"
+    max-width="auto"
+    class="mx-auto bg-transparent"
   >
-    <VContainer style="background: transparent;">
-      <VRow dense >
-
+    <VContainer>
+      <VRow dense>
         <VCol
-        cols="auto"
+          cols="auto"
           v-for="i in result"
           :key="i"
-          class="mx-auto my-2">
+          class="mx-auto my-2 d-flex">
           <v-card
+            border
+            border-primary
             color="white"
             theme="dark"
-            width="370"
+            width="380"
           >
-            <div class="d-flex flex-no-wrap justify-space-between">
+
+            <div class="d-flex flex-wrap justify-space-between">
               <div>
               <VCard-text class="text-h5 font-weight-bold">
                 <VAvatar class="avatar-1 mr-3 border border-primary bg-white" size="45">
-                  <VIcon size="40" class="text-primary">mdi-account</VIcon>
+                  <VIcon class="text-primary">mdi-account</VIcon>
                 </VAvatar>{{ i.name }}
-            </VCard-text>
+              </VCard-text>
               <VCard-text>{{ i.description }}</VCard-text>
-            </div>
-
-
+              </div>
             </div>
           </v-card>
         </VCol>
-
       </VRow>
     </VContainer>
   </VCard>
+</div>
 </template>
 
 <script lang="ts">
@@ -48,7 +49,7 @@ export default defineComponent({
     const deleteN = (id)=>{
     console.log(id);
       if(id!==null){
-        axios.post('http://26.228.141.51/delete.php', {
+        axios.post('http://directory03beta.000webhostapp.com/delete.php', {
           id: parseInt(id)
         })
         .then((response)=>{
@@ -64,7 +65,7 @@ export default defineComponent({
   }
 
   onMounted(() => {
-    axios.get('http://26.228.141.51/postapi.php')
+    axios.get('http://directory03beta.000webhostapp.com/postapi.php')
     .then(response => {
       result.value = (response.data).reverse()
     })

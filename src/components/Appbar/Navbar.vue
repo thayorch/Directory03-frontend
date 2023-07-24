@@ -52,7 +52,7 @@
         ></VTab>
       <VTab
         prepend-icon="mdi-compass"
-          router to="/post"
+          router to="/explore"
           class="mx-0 my-0 pl-7 py-0"
         style=" min-width: 70px;"
         ></VTab>
@@ -77,14 +77,17 @@
           router :to="link.route"
         >
         </VList-item>
-        <VBtn class="d-grid font-weight-bold border my-1 mx-3 align-middle"
-        height="40" type="submit"
+        <VBtn v-if="permissions=='user'" class="d-grid font-weight-bold border my-1 mx-3 align-middle"
+        height="40" type="button"
         @click="popup=true">Log in</VBtn>
+
+        <VBtn v-else-if="permissions=='admin'" class="d-grid font-weight-bold border my-1 mx-3 align-middle"
+        height="40" type="button"
+        >Log out</VBtn>
       </VList>
     </VMenu>
 </div>
   </VApp-bar>
-  <VDivider></VDivider>
   <v-dialog
       v-model="popup"
       width="auto"
@@ -100,22 +103,45 @@ export default defineComponent({
     LoginForm,
   },
   setup() {
+    let popup=ref(false);
+    let links=ref<any>([ { title : "Directory", icon:"mdi-account-group", route:'/'},
+          { title : "Explore", icon:"mdi-compass",route:'/explore'},
+          { title : "About", icon:"mdi-information",route:'/about'},]);
+    let permissions=ref<string>('');
+
     const Alert = (event: any)=>{
-      alert(JSON.stringify(event));
+      popup = false;
+      permissions.value = event 
+      console.log(permissions.value , "Permissions");
+      if(permissions.value == 'admin'){
+        alert("Hello "+permissions.value+" !!!");
+      }else{
+        alert('You are not admin !!!');
+      }
+      if(permissions.value=='user'){
+        links.value=[
+          { title : "Directory", icon:"mdi-account-group", route:'/'},
+          { title : "Explore", icon:"mdi-compass",route:'/explore'},
+          { title : "About", icon:"mdi-information",route:'/about'},
+        ]
+      }
+      if(permissions.value=='admin'){
+        links.value=[
+          { title : "Directory", icon:"mdi-account-group", route:'/'},
+          { title : "Explore", icon:"mdi-compass",route:'/explore'},
+          { title : "Staff", icon:"mdi-security",route:'/staff'},
+          { title : "About", icon:"mdi-information",route:'/about'},
+          ]
+      }
+      
     }
 
-    const links=[
-      { title : "Directory", icon:"mdi-account-group", route:'/'},
-      { title : "Explorer", icon:"mdi-compass",route:'/post'},
-      { title : "About", icon:"mdi-information",route:'/about'},
-    ]
-    
-    let popup=ref(false)
     return{
     Alert,
     LoginForm,
     popup,
-    links
+    links,
+    permissions,
     }
   },
 })
