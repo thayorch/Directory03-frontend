@@ -30,14 +30,11 @@ import { defineComponent } from 'vue'
 import axios from 'axios';
 
 export default defineComponent({
-  emit:["submitlogin"],
-  setup() {
-    let post_data={
-            username: "",
-            password: "",
-    }
+  emits:['submitlogin'],
+  props:[],
+  setup(props, {emit}) {
+    let post_data={username: "",password: ""}
     let res=""
-
     const login = (e)=>{
         e.preventDefault();
         axios.post('http://26.228.141.51/login.php', {
@@ -45,10 +42,9 @@ export default defineComponent({
         pass: post_data.password,
       }).then(response => {
         res = (response.data)
-        console.log(res);
-        if(res=="admin")
-          console.log(res);
-      });
+        console.log(res);           //admin\r\n\r\n
+        emit('submitlogin',res) 
+      })
     }
     return{
       post_data,

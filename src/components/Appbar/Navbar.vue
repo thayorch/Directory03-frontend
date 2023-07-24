@@ -88,7 +88,7 @@
   <v-dialog
       v-model="popup"
       width="auto"
-    ><div class="text-center"><LoginForm @submitlogin="onSubmitlogin"/></div>
+    ><div class="text-center"><LoginForm @submitlogin="Alert"/></div>
 </v-dialog>
 </template>
 
@@ -100,17 +100,19 @@ export default defineComponent({
     LoginForm,
   },
   setup() {
-    const onSubmitlogin = ()=>{
-      alert("Login");
+    const Alert = (event: any)=>{
+      alert(JSON.stringify(event));
     }
+
     const links=[
       { title : "Directory", icon:"mdi-account-group", route:'/'},
       { title : "Explorer", icon:"mdi-compass",route:'/post'},
       { title : "About", icon:"mdi-information",route:'/about'},
     ]
+    
     let popup=ref(false)
     return{
-    onSubmitlogin,
+    Alert,
     LoginForm,
     popup,
     links
