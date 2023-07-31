@@ -39,7 +39,7 @@ export default defineComponent({
       const data = {user: username,
                     pass: password,}
       
-          axios.post('http://directory03beta.000webhostapp.com/login.php', data)
+          axios.post('http://192.168.1.106/login.php', data)
                   .then(response => {
                   res = (response.data)
                   // console.log(res);           //admin\r\n\r\n

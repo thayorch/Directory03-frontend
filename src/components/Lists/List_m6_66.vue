@@ -72,7 +72,7 @@ export default defineComponent({
     const result = ref<any>([])
     const links = []
     onMounted(() => {
-        axios.get('http://directory03beta.000webhostapp.com/66api.php')
+        axios.get('http://192.168.1.106/66api.php')
               .then(response => {
                 result.value = response.data
                 for(let i = 0; i < result.value.length; i++){

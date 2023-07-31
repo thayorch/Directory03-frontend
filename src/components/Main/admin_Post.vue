@@ -63,9 +63,9 @@ export default defineComponent({
     const deleteN = (id)=>{
     console.log(id);
       if(id!==null){
-        axios.post('http://directory03beta.000webhostapp.com/delete.php',id)
+        axios.post('http://192.168.1.106/delete.php',id)
         .then((response)=>{
-          console.log(response);
+          // console.log(response);
           window.location.reload()
         })
       }else{
@@ -74,7 +74,7 @@ export default defineComponent({
   }
 
   onMounted(() => {
-    axios.get('http://directory03beta.000webhostapp.com/postapi.php')
+    axios.get('http://192.168.1.106/postapi.php')
     .then(response => {
       result.value = (response.data).reverse()
     })

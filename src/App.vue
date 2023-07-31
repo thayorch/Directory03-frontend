@@ -21,7 +21,7 @@ export default defineComponent({
     },
     setup() {
     onMounted(() => {
-      if(onloadstart==true) location.reload();
+      if(onloadstart==true) window.location.reload();
     })
     return{onMounted}
   },
