@@ -78,11 +78,7 @@
         </VList-item>
         <VBtn v-if="permissions!='admin'" class="d-grid font-weight-bold border my-1 mx-3 align-middle"
         height="40" type="button"
-        @click="popup=true">Log in</VBtn>
-
-        <VBtn v-else-if="permissions=='admin'" class="d-grid font-weight-bold border my-1 mx-3 align-middle"
-        height="40" type="button"
-        @click="permissions='user'">Log out</VBtn>
+        @click="popup=!popup">Log in</VBtn>
       </VList>
     </VMenu>
 </div>
@@ -109,7 +105,7 @@ export default defineComponent({
     let permissions=ref<string>('');
 
     const Alert = (event: any)=>{
-      popup = false;
+      popup = ref(false);
       permissions.value = event
       console.log(permissions.value , "Permissions");
       if(permissions.value == 'admin'){
