@@ -1,7 +1,6 @@
 <template>
   <VApp-bar
     class="px-3 d-block flex-column"
-    color="white"
     flat
     prominent
     density="compact"
@@ -77,13 +76,13 @@
           router :to="link.route"
         >
         </VList-item>
-        <VBtn v-if="permissions=='user'" class="d-grid font-weight-bold border my-1 mx-3 align-middle"
+        <VBtn v-if="permissions!='admin'" class="d-grid font-weight-bold border my-1 mx-3 align-middle"
         height="40" type="button"
         @click="popup=true">Log in</VBtn>
 
         <VBtn v-else-if="permissions=='admin'" class="d-grid font-weight-bold border my-1 mx-3 align-middle"
         height="40" type="button"
-        >Log out</VBtn>
+        @click="permissions='user'">Log out</VBtn>
       </VList>
     </VMenu>
 </div>
@@ -104,14 +103,14 @@ export default defineComponent({
   },
   setup() {
     let popup=ref(false);
-    let links=ref<any>([ { title : "Directory", icon:"mdi-account-group", route:'/'},
+    let links=ref([ { title : "Directory", icon:"mdi-account-group", route:'/'},
           { title : "Explore", icon:"mdi-compass",route:'/explore'},
           { title : "About", icon:"mdi-information",route:'/about'},]);
     let permissions=ref<string>('');
 
     const Alert = (event: any)=>{
       popup = false;
-      permissions.value = event 
+      permissions.value = event
       console.log(permissions.value , "Permissions");
       if(permissions.value == 'admin'){
         alert("Hello "+permissions.value+" !!!");

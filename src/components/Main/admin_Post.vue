@@ -56,23 +56,18 @@ import axios from 'axios'
 import { defineComponent, onMounted, ref } from 'vue'
 export default defineComponent({
   setup() {
-    const result= ref<any>([])
+    const result= ref([])
     const post_data = {name:"",description:""}
     let dialog= ref(false)
 
     const deleteN = (id)=>{
     console.log(id);
       if(id!==null){
-        axios.post('http://directory03beta.000webhostapp.com/delete.php', {
-          id: parseInt(id)
-        })
+        axios.post('http://directory03beta.000webhostapp.com/delete.php',id)
         .then((response)=>{
           console.log(response);
           window.location.reload()
         })
-        .catch((error)=> {
-          console.log(error);
-        });
       }else{
         console.log("Error to delete");
       }
@@ -87,6 +82,7 @@ export default defineComponent({
       console.error('Error fetching data:', error);
     });
   })
+  
   return{
     result,
     post_data,

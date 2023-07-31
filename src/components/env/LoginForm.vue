@@ -17,7 +17,7 @@
                     <input type="password" v-model="post_data.password" name="password" autocomplete="off" required>
                     <label for="">Password</label>
                 </div>
-                  <VBtn type="button" @click="login">Log in</VBtn>
+                  <VBtn type="button" @click="login(post_data.username,post_data.password)">Log in</VBtn>
             </form>
         </div>
     </div>
@@ -33,22 +33,28 @@ export default defineComponent({
   emits:['submitlogin'],
   setup(props, {emit}) {
     let post_data={username: "",password: ""}
-    var data = {user: post_data.username,
-                pass: post_data.password,}
+
     let res=""
-    const login = (e)=>{
-        e.preventDefault();
-        axios.post('http://directory03beta.000webhostapp.com/login.php', data).then(response => {
-        res = (response.data)
-        // console.log(res);           //admin\r\n\r\n
-        if(res=='admin\r\n\r\n'){
-          res = 'admin'
-          emit('submitlogin',res); 
-        }else{
-          res='user'
-          emit('submitlogin',res);
-        }
-      })
+    const login = (username,password)=>{
+      const data = {user: username,
+                    pass: password,}
+      
+          axios.post('http://directory03beta.000webhostapp.com/login.php', data)
+                  .then(response => {
+                  res = (response.data)
+                  // console.log(res);           //admin\r\n\r\n
+                    if(res=='admin\r\n\r\n'){
+                      res = 'admin'
+                      emit('submitlogin',res);
+                    }else{
+                      res='user'
+                      emit('submitlogin',res);
+                    }
+                  })
+        
+
+        
+      
     }
     return{
       post_data,

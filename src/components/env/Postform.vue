@@ -12,15 +12,15 @@
 
                   <div class="inputbox">
                       <v-icon class="icon">mdi-account</v-icon>
-                      <input autocomplete="off" type="text" name="username" v-model="post_data.name" required>
+                      <input autocomplete="off" type="text" name="username" v-model="postdata.name" required>
                       <label for="">Name (ชื่อ/tag)</label>
                   </div>
                   <div class="inputbox">
                     <v-icon class="icon">mdi-text-long</v-icon>
-                      <input autocomplete="off" type="text" name="description" class="des" v-model="post_data.description" required>
+                      <input autocomplete="off" type="text" name="description" class="des" v-model="postdata.description" required>
                       <label for="">Description (คำใบ้/ฝากบอกถึง)</label>
                   </div>
-                  <button type="submit" @click="sendData">Submit</button>
+                  <button type="submit" @click="sendData(postdata.name,postdata.description)">Submit</button>
               </form>
           </div>
       </div>
@@ -33,21 +33,18 @@ import { defineComponent } from 'vue'
 import axios from 'axios'
 export default defineComponent({
   setup() {
-    let post_data={name:"",description:"",}
-    var data = {name:  post_data.name, description:  post_data.description,}
-    const sendData = ()=>{
-            console.log("sendData Active!!");
-            if( post_data.name!=='' &&  post_data.description!==''){
-            axios.post('http://directory03beta.000webhostapp.com/insert.php', data)
-            .then((response)=>{
-              console.log(response);
-            })
-          }else{
-            console.log("Error data Null");
-          }
-          }
+    let  postdata={name:"",description:"",}
+    const sendData = (name,description) =>{
+      if( name!='' &&  description!=''){
+        console.log("sendData Active!!");
+        axios.post('http://directory03beta.000webhostapp.com/insert.php', {name:name,description:description})
+        .then(response => {console.log(response)}
+        )
+      }else console.log("Error data Null");
+    }
+
     return{
-        post_data,
+        postdata,
         sendData
     }
   },
