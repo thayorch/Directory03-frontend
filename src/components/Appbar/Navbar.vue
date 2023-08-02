@@ -98,17 +98,19 @@ export default defineComponent({
     LoginForm,
   },
   setup() {
-    let popup=ref(false);
+    let popup=ref<boolean>();
     let links=ref([ { title : "Directory", icon:"mdi-account-group", route:'/'},
           { title : "Explore", icon:"mdi-compass",route:'/explore'},
           { title : "About", icon:"mdi-information",route:'/about'},]);
     let permissions=ref<string>('');
 
     const Alert = (event: any)=>{
-      popup = ref(false);
+      
       permissions.value = event
       console.log(permissions.value , "Permissions");
+      popup = false;
       if(permissions.value == 'admin'){
+        
         alert("Hello "+permissions.value+" !!!");
       }else{
         alert('You are not admin !!!');

@@ -1,5 +1,5 @@
 <template>
-  <user_Post/>
+  <user_Post class="mt-1"/>
   
   <v-dialog
     v-model="dialog"
