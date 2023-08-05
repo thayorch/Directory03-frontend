@@ -37,12 +37,8 @@ export default defineComponent({
     const sendData = (name,description) =>{
       if( name!='' &&  description!=''){
         console.log("sendData Active!!");
-        axios.post('http://26.228.141.51/insert.php', {name:name,description:description})
-        .then(response => {
-          // console.log(response)
-          window.location.reload()
-        }
-        )
+        axios.post('https://directory03beta.000webhostapp.com/insert.php', {name:name,description:description})
+        window.location.reload();
       }else console.log("Error data Null");
     }
 

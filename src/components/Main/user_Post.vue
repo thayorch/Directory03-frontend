@@ -49,7 +49,7 @@ export default defineComponent({
     const deleteN = (id)=>{
     console.log(id);
       if(id!==null){
-        axios.post('http://26.228.141.51/delete.php', {
+        axios.post('/delete.php', {
           id: parseInt(id)
         })
         .then((response)=>{
@@ -65,7 +65,7 @@ export default defineComponent({
   }
 
   onMounted(() => {
-    axios.get('http://26.228.141.51/postapi.php')
+    axios.get('/postapi.php')
     .then(response => {
       result.value = (response.data).reverse()
     })

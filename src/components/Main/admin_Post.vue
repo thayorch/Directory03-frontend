@@ -63,18 +63,17 @@ export default defineComponent({
     const deleteN = (id)=>{
     console.log(id);
       if(id!==null){
-        axios.post('http://26.228.141.51/delete.php',id)
-        .then((response)=>{
-          // console.log(response);
-          window.location.reload()
-        })
+        axios.post('/delete.php',id)
+
+        window.location.reload();
+
       }else{
         console.log("Error to delete");
       }
   }
 
   onMounted(() => {
-    axios.get('http://26.228.141.51/postapi.php')
+    axios.get('/postapi.php')
     .then(response => {
       result.value = (response.data).reverse()
     })
