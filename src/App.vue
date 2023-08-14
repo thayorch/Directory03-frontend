@@ -3,8 +3,8 @@
     <VMain class="main">
         <Navbar/>
         <RouterView/>
-        <Footer/>
-    </VMain>
+      </VMain>
+      <Footer/>
   </VApp>
 </template>
 

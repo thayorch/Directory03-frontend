@@ -11,23 +11,36 @@
       <div class="text-center"><newPost/></div>
   </v-dialog>
 
+
+
+  <v-dialog
+      v-model="popup"
+      width="auto"
+    ><div class="text-center"><alert @click="popup=false"/></div>
+</v-dialog>
+
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import newPost from "@/components/env/Postform";
 import user_Post from "@/components/Main/user_Post.vue";
+import alert from '@/components/env/alert.vue';
 
 export default defineComponent({
   components: {
     newPost,
     user_Post,
+    alert
   },
   setup() {
-     let dialog=ref(false)
+    let popup = ref<boolean>(true)
+     let dialog=ref<boolean>(false)
      return{
-      dialog
+      dialog,
+      popup
      }
+     
   },
 })
 </script>
