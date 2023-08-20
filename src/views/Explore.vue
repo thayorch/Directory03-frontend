@@ -6,7 +6,7 @@
     width="auto"
   >
       <template v-slot:activator="{ props }">
-        <VBtn density="comfortable" icon="mdi-plus" color="#c2aee1" size="50" class="newPost" v-bind="props"></VBtn>
+        <VBtn density="comfortable" icon="mdi-plus" color="#c2aee1" size="55" class="newPost" v-bind="props"></VBtn>
       </template>
       <div class="text-center"><newPost/></div>
   </v-dialog>
@@ -35,12 +35,11 @@ export default defineComponent({
   },
   setup() {
     let popup = ref<boolean>(true)
-     let dialog=ref<boolean>(false)
-     return{
+    let dialog=ref<boolean>(false)
+    return{
       dialog,
       popup
-     }
-     
+    }
   },
 })
 </script>

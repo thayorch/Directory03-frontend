@@ -17,7 +17,7 @@
         <!-- <v-icon color="primary">mdi-security</v-icon> -->
         <br>
       </p>
-      <h2 class="text-h5 mb-6">โพสต์ข้อความ กดรูปบวก(+) ขวาล่างได้เลย</h2>
+      <h2 class="text-h5 mb-6">โพสต์ข้อความ กดรูปบวก (+) ขวาล่างได้เลย</h2>
   
   
       <v-divider class="mb-4"></v-divider>

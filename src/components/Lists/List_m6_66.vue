@@ -72,7 +72,7 @@ export default defineComponent({
     const result = ref<any>([])
     const links = []
     onMounted(() => {
-        axios.get('/66api.php')
+        axios.get('http://localhost/M6_66api.php')
               .then(response => {
                 result.value = response.data
                 for(let i = 0; i < result.value.length; i++){
