@@ -16,7 +16,7 @@
      height="680"
      >
        <VImg
-       :src="links[i.number-1]"
+       :src="links[i.id-1]"
        width="360"
        height="355"
        aspect-ratio="1"
@@ -72,7 +72,7 @@
      const result = ref<any>([])
      const links = []
      onMounted(() => {
-         axios.get('http://localhost/M5_66api.php')
+         axios.get('/M5_66api.php')
                .then(response => {
                  result.value = response.data
                  for(let i = 0; i < result.value.length; i++){
