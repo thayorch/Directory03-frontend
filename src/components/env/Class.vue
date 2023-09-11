@@ -34,7 +34,7 @@
     </VImg>
     <VCard-item class="pb-0">
       <a href="/list66" class="text-primary" style="text-decoration: none;">
-        <VCard-title align="center"><b>LIST {{i.title}}</b></VCard-title></a>
+        <VCard-title align="center"><b>{{i.title}}</b></VCard-title></a>
     </VCard-item>
   </VCard>
   </VCol>
@@ -47,9 +47,9 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   setup() {
     const Class=[
-          {title:'M.6/66',logo:'/public/logo/m6.png',route:'/list_m6_66'},
-          {title:'M.5/66',logo:'/public/logo/m5.png',route:'/list_m5_66'},
-          {title:'M.4/66',logo:'/public/logo/m4.png',route:'/list_m4_66'},
+          {title:'รายชื่อ ม.6/66',logo:'/public/logo/m6.png',route:'/list_m6_66'},
+          {title:'รายชื่อ ม.5/66',logo:'/public/logo/m5.png',route:'/list_m5_66'},
+          {title:'รายชื่อ ม.4/66',logo:'/public/logo/m4.png',route:'/list_m4_66'},
         ];
     return {
       Class
